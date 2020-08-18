@@ -18,20 +18,17 @@ public class ListToCsv1 {
         BufferedWriter csvFileOutputStream = null;
         try {
             csvFile = new File(outPutPath + filename + ".csv");
-            // csvFile.getParentFile().mkdir();
             File parent = csvFile.getParentFile();
             if (parent != null && !parent.exists()) {
                 parent.mkdirs();
             }
             csvFile.createNewFile();
 
-            // GB2312使正确读取分隔符","
+            // GB2312 正确读取分隔符","
             csvFileOutputStream = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(csvFile), "GB2312"), 1024);
-            // 写入文件头部
 
             // 写入文件内容
-//            int line = 0;
             for (Iterator<OutputCsv1> iterator = exportData.iterator(); iterator.hasNext();) {
 
             	OutputCsv1 csv1 = iterator.next();

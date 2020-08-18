@@ -2,9 +2,13 @@ package electric;
 
 public class OutputCsv1 {
 
+	/** 电表id **/
 	private String eid;
+	/** 日期 **/
 	private String date;
+	/** 时间 **/
 	private String time;
+	/** 30分钟使用量 **/
 	private Integer use30;
 
     public String getEid() {

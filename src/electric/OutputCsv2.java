@@ -2,8 +2,11 @@ package electric;
 
 public class OutputCsv2 {
 
+	/** 电表id **/
 	private String eid;
+	/** 日期 **/
 	private String date;
+	/** 日使用量 **/
 	private Integer usebyday;
 
     public String getEid() {

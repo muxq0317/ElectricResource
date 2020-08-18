@@ -17,7 +17,7 @@ public class ReadCsv {
 
     * @param inpath csv文件存储路径
 
-    * @return 返回List<taskRule>对象
+    * @return 返回List<>对象
 
     */
 
@@ -47,7 +47,7 @@ public class ReadCsv {
     return list;
     }
 
-    //csvtoList
+    //csv->List
     public static List<InputCsv> csvtoList(String fileurl){
         String inpath=fileurl;
         List<InputCsv> list=ReadCsv.readCsv(inpath);
@@ -57,18 +57,19 @@ public class ReadCsv {
         return null;
     }
 
-    //main
+    //main函数
     public static void main(String[] args) {
+    	//csv读入变成list
     	List<InputCsv> list = csvtoList("D:\\muxq\\111.csv");
 
-    	//sort
+    	//list排序
     	List<InputCsv> collect=list.stream().sorted(
     			Comparator.comparing(InputCsv::getEid).
     			thenComparing(InputCsv::getDate).
     			thenComparing(InputCsv::getTime)).
     			collect(Collectors.toList());
 
-    	//csv1
+    	//生成csv1的list（不会用流处理）
     	List<OutputCsv1> outputcsv1 = new ArrayList<OutputCsv1>();
     	for(int i=1;i<=collect.size()-1;i++) {
     		OutputCsv1 csv1 = new OutputCsv1();
@@ -80,7 +81,7 @@ public class ReadCsv {
 
     	}
 
-    	//csv2
+    	//生成csv2的list
     	Map<String, Map<String, IntSummaryStatistics>> group =
     			outputcsv1.stream().collect(
     					Collectors.groupingBy(OutputCsv1::getEid,
